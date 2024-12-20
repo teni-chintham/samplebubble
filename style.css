@@ -1,0 +1,147 @@
+/* General Body Styling */
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
+}
+
+/* Left Section */
+.left-section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  color: white;
+  text-align: center;
+}
+
+.left-section h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Right Section (Bubble Carousel) */
+.right-section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Bubble Set Styling */
+.bubble-set {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+  animation: moveAcrossSet 20s linear infinite; /* Infinite scroll effect for each set */
+}
+
+/* Keyframes for infinite scrolling for each set */
+@keyframes moveAcrossSet {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+  }
+  100% {
+    transform: translateX(100%); /* End off-screen to the right */
+  }
+}
+
+/* Individual Bubble Styling */
+.bubble {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s, opacity 0.5s, box-shadow 0.5s;
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Different colors for each set */
+.set-1 .bubble {
+  background: rgba(255, 99, 71, 0.9); /* Tomato */
+}
+
+.set-2 .bubble {
+  background: rgba(70, 130, 180, 0.9); /* SteelBlue */
+}
+
+.set-3 .bubble {
+  background: rgba(124, 252, 0, 0.9); /* LawnGreen */
+}
+
+/* Click effect: enlarge bubble */
+.bubble.clicked {
+  transform: scale(2.5);
+  box-shadow: 0 0 25px 15px rgba(0, 123, 255, 0.8);
+  z-index: 10;
+}
+
+/* Dim other bubbles */
+.bubble.dimmed {
+  opacity: 0.2;
+  transform: scale(0.8);
+}
+
+/* Opacity gradient effect based on distance */
+.bubble[data-distance] {
+  opacity: calc(1 - var(--distance) / 1000);
+}
+
+/* Updated Button Styling */
+button {
+  margin-top: 20px;
+  padding: 18px 45px;
+  background: #007bff; /* Blue background */
+  color: white;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Hover Effect */
+button:hover {
+  background: #0056b3; /* Darker blue on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus Effect */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 99, 71, 0.3);
+}
+
+button:active {
+  transform: translateY(2px); /* Slightly push down when clicked */
+}
+
+/* Button Disabled */
+button:disabled {
+  background: #d3d3d3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
